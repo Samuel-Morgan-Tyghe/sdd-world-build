@@ -18,6 +18,31 @@
         15%  { opacity: 1; }
         100% { transform: translateY(-22px); opacity: 0; }
       }
+      /* Bike-E7+: touch-friendly tap targets in modal dialogs.
+         Inline styles in the components keep their colors / look; this
+         layer just enforces a 44pt minimum hit area on touch devices. */
+      @media (pointer: coarse) {
+        button[data-testid$="-close"],
+        button[data-testid$="-buy"],
+        button[data-testid^="shop-buy-"],
+        button[data-testid^="shop-sell-"],
+        button[data-testid^="shop-tab-"],
+        button[data-testid^="perk-buy-"],
+        button[data-testid^="quest-claim-"],
+        button[data-testid^="cook-"],
+        button[data-testid^="equip-"]:not([data-testid^="equip-delta-"]):not([data-testid^="equip-slot-"]),
+        button[data-testid^="unequip-"],
+        button[data-testid^="uncurse-"] {
+          min-height: 44px !important;
+          min-width: 44px !important;
+          padding: 10px 14px !important;
+          touch-action: manipulation;
+        }
+        /* Close × buttons usually inline-styled at 28×28. Bump to 44×44. */
+        button[data-testid$="-close"] {
+          font-size: 20px !important;
+        }
+      }
     </style>
     <script type="module" crossorigin src="/sdd-world-build/assets/index-DoFukqoS.js"></script>
   </head>
